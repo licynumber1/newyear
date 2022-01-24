@@ -9,7 +9,7 @@
 <body style="width: 100%;height: 100%">
 <div class="swiper-container">
     <div class="swiper-wrapper" id="page-swiper">
-        <div class="swiper-slide" style="position:relative;background-color:#00214b;background-image: url('imgage1_2022.png');background-repeat: no-repeat;background-size: 100% auto">
+        <div class="swiper-slide" style="position:relative;background-color:#00214b;background-image: url('./img/page1_2022.png');background-repeat: no-repeat;background-size: 100% auto">
             <div class="wrapper">
                 <div class="page1-header"></div>
                 <div class="page1-center"></div>
@@ -18,14 +18,14 @@
                 <div class="page1-player">
                     <div id="player-wrapper">
                         <video id="bg-player" class="player-item" autoplay="autoplay" muted loop="loop" style="object-fit: fill;" playsinline='false' webkit-playsinline='false'>
-                            <source src="staticg.mp4">
+                            <source src="./static/bg.mp4">
                         </video>
-                        <audio id="player" src="staticg.mp3" controls autoplay style="visibility: hidden" loop="loop"></audio>
+                        <audio id="player" src="./static/bg.mp3" controls autoplay style="visibility: hidden" loop="loop"></audio>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="swiper-slide" style="position:relative;background-color:#00214b;background-image: url('imgage2_2022.png');background-repeat: no-repeat;background-size: 100% auto">
+        <div class="swiper-slide" style="position:relative;background-color:#00214b;background-image: url('./img/page2_2022.png');background-repeat: no-repeat;background-size: 100% auto">
             <div class="wrapper">
                 <div class="tiger-head"></div>
                 <div class="swiper mySwiper wrapper-card">
@@ -38,7 +38,7 @@
                         <div class="swiper-slide swiper-slide-change">
                             <div class="inner-video-wrapper">
                                 <video class="player-item" controls="controls" playsinline='false' webkit-playsinline='false'>
-                                    <source src="static.mp4">
+                                    <source src="./static/1.mp4">
                                 </video>
                                 <div class="player-item-tips player-item-tips-1"></div>
                             </div>
@@ -46,7 +46,7 @@
                         <div class="swiper-slide swiper-slide-change">
                             <div class="inner-video-wrapper">
                                 <video class="player-item" controls="controls" playsinline='false' webkit-playsinline='false'>
-                                    <source src="static.mp4">
+                                    <source src="./static/2.mp4">
                                 </video>
                                 <div class="player-item-tips player-item-tips-2"></div>
                             </div>
@@ -54,7 +54,7 @@
                         <div class="swiper-slide swiper-slide-change">
                             <div class="inner-video-wrapper">
                                 <video class="player-item" controls="controls" playsinline='false' webkit-playsinline='false'>
-                                    <source src="static.mp4">
+                                    <source src="./static/3.mp4">
                                 </video>
                                 <div class="player-item-tips player-item-tips-3"></div>
                             </div>
@@ -62,7 +62,7 @@
                         <div class="swiper-slide swiper-slide-change">
                             <div class="inner-video-wrapper">
                                 <video class="player-item" controls="controls" playsinline='false' webkit-playsinline='false'>
-                                    <source src="static.mp4">
+                                    <source src="./static/4.mp4">
                                 </video>
                                 <div class="player-item-tips player-item-tips-4"></div>
                             </div>
@@ -70,7 +70,7 @@
                         <div class="swiper-slide swiper-slide-change">
                             <div class="inner-video-wrapper">
                                 <video class="player-item" controls="controls" playsinline='false' webkit-playsinline='false' onplay="onplayEnd()" onended="finishEnd()">
-                                    <source src="static.mp4">
+                                    <source src="./static/5.mp4">
                                 </video>
                                 <div class="player-item-tips player-item-tips-5"></div>
                             </div>
@@ -129,7 +129,7 @@
         height: 100%;
         z-index: 999;
         transform: translateZ(999px);
-        background-image: url('imgage0.png');
+        background-image: url('./img/page0.png');
         background-size: 100% 100%;
     }
     .swiper {
@@ -222,7 +222,7 @@
     }
     .mySwiper>.swiper-wrapper>.swiper-slide-change{
         align-items: flex-start;
-        background-image: url('img/card_bg.png');;
+        background-image: url('./img/2/card_bg.png');;
         background-size: 100% 100%;
         border-radius: 0.25rem;
         transform:translate3d(22%, 0px, 0px) scale(1);
@@ -268,40 +268,40 @@
         font-family: "Microsoft YaHei";
     }
     .dot-item-1{
-        background-image: url('img/tips1.png');
+        background-image: url('./img/2/tips1.png');
     }
     .dot-item-1-active{
-        background-image: url('img/choice1.png');
+        background-image: url('./img/2/choice1.png');
     }
     .dot-item-2{
-        background-image: url('img/tips2.png');
+        background-image: url('./img/2/tips2.png');
     }
     .dot-item-2-active{
-        background-image: url('img/choice2.png');
+        background-image: url('./img/2/choice2.png');
     }
     .dot-item-3{
-        background-image: url('img/tips3.png');
+        background-image: url('./img/2/tips3.png');
     }
     .dot-item-3-active{
-        background-image: url('img/choice3.png');
+        background-image: url('./img/2/choice3.png');
     }
     .dot-item-4{
-        background-image: url('img/tips4.png');
+        background-image: url('./img/2/tips4.png');
     }
     .dot-item-4-active{
-        background-image: url('img/choice4.png');
+        background-image: url('./img/2/choice4.png');
     }
     .dot-item-5{
-        background-image: url('img/tips5.png');
+        background-image: url('./img/2/tips5.png');
     }
     .dot-item-5-active{
-        background-image: url('img/choice5.png');
+        background-image: url('./img/2/choice5.png');
     }
     .page1-header{
         position: absolute;
         width: 100%;
         top: 0px;
-        background-image: url('img/header.png');
+        background-image: url('./img/1/header.png');
         background-repeat: no-repeat;
         background-size: 100%;
         height: 50%;
@@ -312,7 +312,7 @@
         width: 88%;
         left: 9%;
         top: 4.6rem;
-        background-image: url('img/center_words.png');
+        background-image: url('./img/1/center_words.png');
         background-repeat: no-repeat;
         background-size: 100%;
         height: 120px;
@@ -322,7 +322,7 @@
         position: absolute;
         width: 100%;
         top: 5.7rem;
-        background-image: url('img/pics.png');
+        background-image: url('./img/1/pics.png');
         background-repeat: no-repeat;
         background-size: 100%;
         height: 100%;
@@ -333,7 +333,7 @@
         width: 64%;
         left: 18%;
         bottom: calc(5% + 0px);
-        background-image: url('img/bottom.png');
+        background-image: url('./img/1/bottom.png');
         background-repeat: no-repeat;
         background-size: 100%;
         height: 2rem;
@@ -370,19 +370,19 @@
         z-index: 0;
     }
     .player-item-tips-1{
-        background-image: url('img/center1.png');
+        background-image: url('./img/2/center1.png');
     }
     .player-item-tips-2{
-        background-image: url('img/center2.png');
+        background-image: url('./img/2/center2.png');
     }
     .player-item-tips-3{
-        background-image: url('img/center3.png');
+        background-image: url('./img/2/center3.png');
     }
     .player-item-tips-4{
-        background-image: url('img/center4.png');
+        background-image: url('./img/2/center4.png');
     }
     .player-item-tips-5{
-        background-image: url('img/center5.png');
+        background-image: url('./img/2/center5.png');
     }
 
     .tiger-head{
@@ -391,7 +391,7 @@
         top: 0.8rem;
         left: 50%;
         transform: translateX(-50%) rotate(-3deg);
-        background-image: url('img/tiger_head.png');
+        background-image: url('./img/2/tiger_head.png');
         background-repeat: no-repeat;
         background-size: 100%;
         height: 50%;
@@ -412,7 +412,7 @@
 </style>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <!--<script src="./swiper.min.js"></script>-->
-<script src="swiperwiper-bundle.min.js"></script>
+<script src="./swiper/swiper-bundle.min.js"></script>
 <script src="common.js"></script>
 <script>
     // 滑动逻辑
@@ -553,30 +553,30 @@
     (function() {
         var video, output;
         var scale = 0.8;
-        var initialize = function() {
-            output = document.getElementById("output");
-            videos = document.getElementsByClassName('player-item')
-            videosArray = [...videos]
-            console.log(videosArray)
-            videosArray.forEach(video=>{
-                video = document.getElementById("video");
-                video.addEventListener('loadeddata', captureImage);
-            })
-        };
-        var captureImage = function() {
-            var canvas = document.createElement("canvas");
-            canvas.width = video.videoWidth * scale;
-            canvas.height = video.videoHeight * scale;
-            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width,
-                canvas.height);
-
-            var img = document.createElement("img");
-            img.src = canvas.toDataURL("image/png");
-            img.width = 400;
-            img.height = 300;
-            output.appendChild(img);
-        };
-        initialize();
+        // var initialize = function() {
+        //     output = document.getElementById("output");
+        //     videos = document.getElementsByClassName('player-item')
+        //     videosArray = [...videos]
+        //     console.log(videosArray)
+        //     videosArray.forEach(video=>{
+        //         var captureImage = function() {
+        //             var canvas = document.createElement("canvas");
+        //             var scale = 1
+        //             canvas.width = video.videoWidth * scale;
+        //             canvas.height = video.videoHeight * scale;
+        //             canvas.getContext('2d').drawImage(video, 0, 0, canvas.width,
+        //                 canvas.height);
+        //
+        //             var img = document.createElement("img");
+        //             img.src = canvas.toDataURL("image/png");
+        //             img.width = 400;
+        //             img.height = 300;
+        //             output.appendChild(img);
+        //         };
+        //         video.addEventListener('loadeddata', captureImage);
+        //     })
+        // };
+        // initialize();
     })();
 
     function clearModal(){
