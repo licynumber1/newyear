@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 50px">
+<html id="html" lang="en" style="font-size: 50px;display: none">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -308,7 +308,6 @@
     }
 </style>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-<!--<script src="./swiper.min.js"></script>-->
 <script src="./swiper/swiper-bundle.min.js"></script>
 <script src="common.js"></script>
 <script>
@@ -485,6 +484,7 @@
     }
 
     window.onload = function() {
+        document.getElementById('html').style.display = 'block'
         autoPlayAudio1()
         // const video = document.getElementById('bg-player');
         // document.addEventListener('WeixinJSBridgeReady', () => {
