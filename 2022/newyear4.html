@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 50px">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui">
+    <title>Title</title>
+</head>
+<body style="width: 100%;height: 100%">
+<div class="swiper-container">
+    <div class="swiper-wrapper" id="page-swiper">
+        <div class="swiper-slide" style="position:relative;background-color:#00214b;background-image: url('imgage1_2022.png');background-repeat: no-repeat;background-size: 100% auto">
+            <div class="wrapper">
+                <div class="page1-header"></div>
+                <div class="page1-center"></div>
+                <div class="page1-pics"></div>
+                <div class="page1-bottom"></div>
+                <div class="page1-player">
+                    <div id="player-wrapper">
+                        <video id="bg-player" class="player-item" autoplay="autoplay" muted loop="loop" style="object-fit: fill;" playsinline='false' webkit-playsinline='false'>
+                            <source src="staticg.mp4">
+                        </video>
+                        <audio id="player" src="staticg.mp3" controls autoplay style="visibility: hidden" loop="loop"></audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide" style="position:relative;background-color:#00214b;background-image: url('imgage2_2022.png');background-repeat: no-repeat;background-size: 100% auto">
+            <div class="wrapper">
+                <div class="tiger-head"></div>
+                <div class="swiper mySwiper wrapper-card">
+                    <div class="swiper-wrapper swiper-wrapper-inner">
+                        <div class="swiper-slide swiper-slide-change" style="visibility: hidden">
+                            <div class="inner-video-wrapper">
+
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-change">
+                            <div class="inner-video-wrapper">
+                                <video class="player-item" controls="controls" playsinline='false' webkit-playsinline='false'>
+                                    <source src="static.mp4">
+                                </video>
+                                <div class="player-item-tips player-item-tips-1"></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-change">
+                            <div class="inner-video-wrapper">
+                                <video class="player-item" controls="controls" playsinline='false' webkit-playsinline='false'>
+                                    <source src="static.mp4">
+                                </video>
+                                <div class="player-item-tips player-item-tips-2"></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-change">
+                            <div class="inner-video-wrapper">
+                                <video class="player-item" controls="controls" playsinline='false' webkit-playsinline='false'>
+                                    <source src="static.mp4">
+                                </video>
+                                <div class="player-item-tips player-item-tips-3"></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-change">
+                            <div class="inner-video-wrapper">
+                                <video class="player-item" controls="controls" playsinline='false' webkit-playsinline='false'>
+                                    <source src="static.mp4">
+                                </video>
+                                <div class="player-item-tips player-item-tips-4"></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-change">
+                            <div class="inner-video-wrapper">
+                                <video class="player-item" controls="controls" playsinline='false' webkit-playsinline='false' onplay="onplayEnd()" onended="finishEnd()">
+                                    <source src="static.mp4">
+                                </video>
+                                <div class="player-item-tips player-item-tips-5"></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-change" style="visibility: hidden">
+                            <div class="inner-video-wrapper">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            <div class="dot-wrapper">
+                <div class="dot">
+                    <div class="dot-item dot-item-1-active" onclick="jump(0)">
+
+                    </div>
+                    <div class="dot-item dot-item-2" onclick="jump(1)">
+
+                    </div>
+                    <div class="dot-item dot-item-3" onclick="jump(2)">
+
+                    </div>
+                    <div class="dot-item dot-item-4" onclick="jump(3)">
+
+                    </div>
+                    <div class="dot-item dot-item-5" onclick="jump(4)">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 如果需要分页器 -->
+</div>
+<div class="modal" id="modal" onclick="clearModal()" />
+</body>
+<style>
+    a,abbr,address,article,aside,audio,b,blockquote,body,canvas,caption,cite,code,dd,dd,del,details,dfn,div,dl,dl,dt,dt,em,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,input,ins,kbd,label,legend,li,mark,menu,nav,object,ol,p,pre,q,s,samp,section,select,small,span,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,ul,var,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body,html{font-family:PingFangSC-Regular}li{list-style:none}a{text-decoration:none;color:#000}a:hover{text-decoration:none;color:#000;-webkit-tap-highlight-color:transparent}.clearfix:after{content:"";height:0;line-height:0;display:block;clear:both;visibility:hidden}input{-webkit-user-select:auto}i{font-style:normal}
+    html,
+    body {
+        position: relative;
+        height: 100vh;
+        -webkit-text-size-adjust: 100% !important;
+        text-size-adjust: 100% !important;
+        -moz-text-size-adjust: 100% !important;
+    }
+    .modal{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 999;
+        transform: translateZ(999px);
+        background-image: url('imgage0.png');
+        background-size: 100% 100%;
+    }
+    .swiper {
+        width: 100%;
+        height: 100%;
+    }
+
+    .swiper-slide {
+        width: 100%;
+        height: 100%;
+        flex-shrink: 0;
+        text-align: center;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+
+    .swiper-wrapper{
+        width: 100%;
+        height: 100%;
+    }
+
+    #page-swiper{
+        width: 100%;
+        height: 100%;
+        overflow-y: hidden;
+    }
+
+    .swiper-wrapper-inner{
+        position: relative;
+        width: 100%;
+        height: 6.66rem;
+        z-index: 1;
+        display: flex;
+        transition-property: transform;
+        box-sizing: content-box;
+    }
+
+    .swiper-slide-inner{
+        flex-shrink:0;
+        width: 200px;
+        height: 300px;
+    }
+
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+
+    .wrapper{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    .wrapper-card{
+        height: 8rem;
+        margin-top: 3.8rem;
+    }
+    .card-list{
+        width: 2000px;
+        height: 300px;
+        position: relative;
+        top: 400px;
+    }
+    .card{
+        float: left;
+        width: 300px;
+        height: 100%;
+        background: red;
+        margin: 0px 10px;
+    }
+    .mySwiper>.swiper-wrapper>.swiper-slide-change{
+        align-items: flex-start;
+        background-image: url('img/card_bg.png');;
+        background-size: 100% 100%;
+        border-radius: 0.25rem;
+        transform:translate3d(22%, 0px, 0px) scale(1);
+        transition: transform linear 0.5s;
+    }
+    .mySwiper>.swiper-wrapper>.swiper-slide-next{
+        transform:translate3d(22%, 0px, 0px) scale(0.95);
+        transition: transform linear 0.5s;
+    }
+    .mySwiper>.swiper-wrapper>.swiper-slide-prev{
+        transform:translate3d(22%, 0px, 0px) scale(0.95);
+        transition: transform linear 0.5s;
+    }
+    .dot-wrapper{
+        left: 50%;
+        transform: translateX(-50%);
+        position: absolute;
+        bottom: 0.7rem;
+        display: flex;
+        justify-content: space-between;
+        z-index: 99;
+    }
+    .dot{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .dot-item{
+        display: inline-block;
+        /*background-color: #0d5d98;*/
+        width: 1.3rem;
+        height: 2.6rem;
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        z-index: 999;
+        transform: translateZ(999px);
+    }
+    .dot-item-label{
+        font-size: 0.25rem;
+        color: #fff;
+        position: relative;
+        top: 1.4rem;
+        font-family: "Microsoft YaHei";
+    }
+    .dot-item-1{
+        background-image: url('img/tips1.png');
+    }
+    .dot-item-1-active{
+        background-image: url('img/choice1.png');
+    }
+    .dot-item-2{
+        background-image: url('img/tips2.png');
+    }
+    .dot-item-2-active{
+        background-image: url('img/choice2.png');
+    }
+    .dot-item-3{
+        background-image: url('img/tips3.png');
+    }
+    .dot-item-3-active{
+        background-image: url('img/choice3.png');
+    }
+    .dot-item-4{
+        background-image: url('img/tips4.png');
+    }
+    .dot-item-4-active{
+        background-image: url('img/choice4.png');
+    }
+    .dot-item-5{
+        background-image: url('img/tips5.png');
+    }
+    .dot-item-5-active{
+        background-image: url('img/choice5.png');
+    }
+    .page1-header{
+        position: absolute;
+        width: 100%;
+        top: 0px;
+        background-image: url('img/header.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        height: 50%;
+        z-index: 1;
+    }
+    .page1-center{
+        position: absolute;
+        width: 88%;
+        left: 9%;
+        top: 4.6rem;
+        background-image: url('img/center_words.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        height: 120px;
+        z-index: 4;
+    }
+    .page1-pics{
+        position: absolute;
+        width: 100%;
+        top: 5.7rem;
+        background-image: url('img/pics.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        height: 100%;
+        z-index: 2;
+    }
+    .page1-bottom{
+        position: absolute;
+        width: 64%;
+        left: 18%;
+        bottom: calc(5% + 0px);
+        background-image: url('img/bottom.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        height: 2rem;
+        z-index: 3;
+    }
+    .page1-player{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0rem;
+        z-index: 0;
+    }
+    #player-wrapper{
+        width: 100%;
+        height: 100%;
+    }
+    .inner-video-wrapper{
+        margin-top: 0.2rem;
+        padding: 0 0.08rem;
+    }
+    .player-item{
+        width: 100%;
+        height: 100%;
+    }
+    .player-item-tips{
+        position: absolute;
+        width: 4.8rem;
+        height: 3.8rem;
+        top: 2.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        z-index: 0;
+    }
+    .player-item-tips-1{
+        background-image: url('img/center1.png');
+    }
+    .player-item-tips-2{
+        background-image: url('img/center2.png');
+    }
+    .player-item-tips-3{
+        background-image: url('img/center3.png');
+    }
+    .player-item-tips-4{
+        background-image: url('img/center4.png');
+    }
+    .player-item-tips-5{
+        background-image: url('img/center5.png');
+    }
+
+    .tiger-head{
+        position: absolute;
+        width: 3.2rem;
+        top: 0.8rem;
+        left: 50%;
+        transform: translateX(-50%) rotate(-3deg);
+        background-image: url('img/tiger_head.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        height: 50%;
+        z-index: 1;
+        animation-name: tigerAnimate;
+        animation-duration: 4s;
+        animation-delay: 2s;
+        animation-iteration-count:infinite;
+        animation-timing-function:linear;
+    }
+    @keyframes tigerAnimate {
+        0%   {transform: translateX(-50%) rotate(-3deg)}
+        /*25%  {transform: translateX(-50%) rotate(3deg)}*/
+        50%  {transform: translateX(-50%) rotate(3deg)}
+        /*75% {transform: translateX(-50%) rotate(-3deg)}*/
+        100% {transform: translateX(-50%) rotate(-3deg)}
+    }
+</style>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<!--<script src="./swiper.min.js"></script>-->
+<script src="swiperwiper-bundle.min.js"></script>
+<script src="common.js"></script>
+<script>
+    // 滑动逻辑
+    var swiperOuter
+    var swiperInner
+    var oldValue
+    const endPage = 1
+    var startIndex = 0
+    function initSwiper(){
+        swiperOuter = new Swiper ('.swiper-container', {
+            direction: 'vertical', // 垂直切换选项
+            loop: false, // 循环模式选项
+
+            // 如果需要分页器
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // 如果需要前进后退按钮
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // 如果需要滚动条
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+
+            on:{
+                touchStart: function(swiper){
+                    startIndex = swiper.realIndex
+                },
+                transitionEnd: function (swiper){
+                    if(startIndex === swiper.realIndex && swiper.realIndex === 1){
+                        const index = (swiperInner.activeIndex) % 5
+                        // 创新4 9 规划5 10 完整6 共享7 全家8
+                        if (index !== 0) {
+                            jump(index)
+                        }
+                    }
+                }
+            }
+        })
+        swiperInner = new Swiper(".mySwiper", {
+            loop: false, // 循环模式选项
+            initialSlide:1,
+            slidesPerView: 1.44,
+            loopAdditionalSlides: 0,
+            spaceBetween: 10,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            on: {
+                transitionEnd: function (swiper){
+                    const tag = swiper.activeIndex - 1
+                    if(tag < 0){
+                        setTimeout(function (){
+                            jump(0)
+                        },0)
+
+                    }else if(tag >= 5){
+                        setTimeout(function (){
+                            jump(4)
+                        },0)
+                    }else {
+                        setTimeout(function (){
+                            jump((tag) % 5,true)
+                        },0)
+                    }
+                }
+            }
+        });
+    }
+    function jump(index,noJumpTag){
+
+        const list = document.getElementsByClassName('dot-item')
+        const listArray = [...list]
+        listArray.forEach((i, index) => {
+            i.className = 'dot-item dot-item-' + (index + 1)
+        })
+        const dom = list[index]
+        dom.className = dom.className + '-active'
+        if(noJumpTag){
+            return
+        }
+        swiperInner.slideTo(index + 1, 1000, false)
+    }
+
+    // 虎头逻辑
+
+    (function headShake(){
+        var dom = document.getElementsByClassName('tiger-head')[0]
+        console.log(dom)
+    })()
+
+    // 音频播放器逻辑
+
+    function playAudio(){
+        document.getElementById('player').play()
+    }
+
+    function stopAudio(){
+        document.getElementById('player').pause()
+    }
+
+    function replayAudio(){
+        document.getElementById('player').load()
+    }
+
+    function onplayEnd(){
+        stopAudio()
+    }
+
+    function finishEnd(){
+        replayAudio()
+        swiperOuter.slideTo(0, 1000, false)
+    }
+
+    // 视频自动播放
+
+    function autoPlayAudio1() {
+        wx.config({
+            // 配置信息, 即使不正确也能使用 wx.ready
+            debug: false,
+            appId: '',
+            timestamp: 1,
+            nonceStr: '',
+            signature: '',
+            jsApiList: []
+        });
+        wx.ready(function() {
+            document.getElementById('bg-player').play();
+        });
+    }
+
+    (function() {
+        var video, output;
+        var scale = 0.8;
+        var initialize = function() {
+            output = document.getElementById("output");
+            videos = document.getElementsByClassName('player-item')
+            videosArray = [...videos]
+            console.log(videosArray)
+            videosArray.forEach(video=>{
+                video = document.getElementById("video");
+                video.addEventListener('loadeddata', captureImage);
+            })
+        };
+        var captureImage = function() {
+            var canvas = document.createElement("canvas");
+            canvas.width = video.videoWidth * scale;
+            canvas.height = video.videoHeight * scale;
+            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width,
+                canvas.height);
+
+            var img = document.createElement("img");
+            img.src = canvas.toDataURL("image/png");
+            img.width = 400;
+            img.height = 300;
+            output.appendChild(img);
+        };
+        initialize();
+    })();
+
+    function clearModal(){
+        document.getElementById("modal").style.display = 'none'
+        document.getElementById("bg-player").play()
+        document.getElementById("page-swiper").style.overflowY = "initial"
+        playAudio()
+        initSwiper()
+    }
+
+    window.onload = function() {
+        autoPlayAudio1()
+        // const video = document.getElementById('bg-player');
+        // document.addEventListener('WeixinJSBridgeReady', () => {
+        //     video.play();
+        // }, false)
+    }
+
+    // todo: 进来播视频和音乐 全家福取消音乐 放完会到首页并重制
+</script>
+</html>
