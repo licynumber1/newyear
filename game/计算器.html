@@ -63,6 +63,9 @@
           <span class="item-label">SM补助:</span>
           <input id="smSubsidy" class="input" type="number" value="200"/>
         </div>
+        <div id="subsidyAdd">
+          <button class="button" onclick="subsidyAdd()">自定义补助</button>
+        </div>
         <div class="item">
           <span class="item-label">摸尸分红:</span>
           <input id="deadBodyPower" class="input" placeholder="摸尸佬(不填默认无)"/>
@@ -120,6 +123,10 @@
   function getResult(){
     const sumValue = ~~document.getElementById('sum').value
     const perCapitaDom = document.getElementById('perCapita')
+    const subsidyAddCountDoms= document.getElementsByClassName('subsidyAddCount') // 额外补助人数
+    const subsidyAddPriceDoms= document.getElementsByClassName('subsidyAddPrice') // 额外补助价格
+    const subsidyAddCountArray= [...subsidyAddCountDoms] // 额外补助人数
+    const subsidyAddPriceArray= [...subsidyAddPriceDoms] // 额外补助价格
     const count = document.getElementById('count').value // 人数
     const detailDom = document.getElementById('detail') // 详细数据
     const deadBodyPower = document.getElementById('deadBodyPower').value // 分红人
@@ -139,7 +146,12 @@
     const tSubsidy = ~~document.getElementById('tCount').value * tSingleSubsidy
     const nSubsidy = ~~document.getElementById('nCount').value * nSingleSubsidy
     const smSubsidy = ~~document.getElementById('smCount').value * smSingleSubsidy
-    subsidy = tSubsidy + nSubsidy + smSubsidy
+
+    let otherSubsidy = 0
+    subsidyAddCountArray.forEach((i,index) => {
+      otherSubsidy += i.value * subsidyAddPriceArray[index].value
+    })
+    subsidy = tSubsidy + nSubsidy + smSubsidy + otherSubsidy
     if(deadBodyPower && (~~deadBodyLimit <= ~~sumValue)){
       deadBodyIncome = sumValue * (deadBodyRate/100)
       perCapita = (sumValue * (1 - deadBodyRate/100) - subsidy) / count
@@ -154,7 +166,8 @@
       "坦克人员总补助" , tSubsidy ,",占比" , (tSubsidy/sumValue * 100).toFixed(2)+"%" , "</br>",
       "治疗人员总补助" , nSubsidy ,",占比" , (nSubsidy/sumValue * 100).toFixed(2)+"%" , "</br>",
       "萨满人员总补助" , smSubsidy ,",占比" , (smSubsidy/sumValue * 100).toFixed(2)+"%" , "</br>",
-      "总补助" , tSubsidy+nSubsidy+smSubsidy ,",总占比" , ((tSubsidy+nSubsidy+smSubsidy)/sumValue * 100).toFixed(2)+"%" , "</br>",
+      "自定义补助" , otherSubsidy ,",占比" , (otherSubsidy/sumValue * 100).toFixed(2)+"%" , "</br>",
+      "总补助" , subsidy ,",总占比" , (subsidy/sumValue * 100).toFixed(2)+"%" , "</br>",
       "普通打工人收入" , perCapita ,",占比" , (perCapita/sumValue * 100).toFixed(2)+"%" , "</br></br>",
 
       "普通打工人收入(向下取整，下同):" , getIntNumber(perCapita) ,"</br>",
@@ -176,6 +189,19 @@
             "          <span>价格:</span><input type='number' class=\"price input\"/>\n" +
             "          <span>获取</span><input class=\"getPlayer input\"/>\n" +
             "          <span>赊账</span><input type=\"checkbox\" class=\"payed\"/>"
+    listDom.append(addDom)
+  }
+
+  function subsidyAdd(){
+    const listDom = document.getElementById("subsidyAdd")
+    const addDom = document.createElement('div')
+    addDom.classList.add('subsidyAddItem')
+    addDom.innerHTML = "<div class=\"item\">\n" +
+            "          <input class=\"item-label\" value='补助人数:'/>\n" +
+            "          <input class=\"input subsidyAddCount\" type=\"number\" value=\"0\"/>\n" +
+            "          <input class=\"item-label\" value='补助单价:' />\n" +
+            "          <input class=\"input subsidyAddPrice\" type=\"number\" value=\"200\"/>\n" +
+            "        </div>"
     listDom.append(addDom)
   }
 
