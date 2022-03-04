@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>烽火必出蛋刀</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="title">烽火——g团计算器V1.0</div>
+    <div class="subTitle">作者：
+      <span class="red">觅心者-鬼子不服</span>
+    </div>
+    <div class="item">
+      <span>总收入:</span>
+      <input id="sum" type="number" value="5000"/>
+    </div>
+    <div class="item">
+      <span>总人数:</span>
+      <input id="count" type="number" value="25"/>
+    </div>
+    <div class="item">
+      <span>T人数</span>
+      <input id="tCount" type="number" value="0"/>
+      <span>T补助</span>
+      <input id="tSubsidy" type="number" value="100"/>
+    </div>
+    <div class="item">
+      <span>N人数</span>
+      <input id="nCount" type="number" value="0"/>
+      <span>N补助</span>
+      <input id="nSubsidy" type="number" value="100"/>
+    </div>
+    <div class="item">
+      <span>SM人数</span>
+      <input id="smCount" type="number" value="0"/>
+      <span>SM补助</span>
+      <input id="smSubsidy" type="number" value="200"/>
+    </div>
+    <div class="item">
+      <span>摸尸分红</span>
+      <input id="deadBodyPower" placeholder="摸尸佬(不填默认无)"/>
+      <span>分红收入</span>
+      <input id="deadBodyLimit" type="number" value="5000"/>
+    </div>
+    <div class="item">
+      <span>分红百分比</span>
+      <input id="deadBodyRate" type="number" value="2"/>
+    </div>
+    <div class="item">
+      <span>人均:</span>
+      <span id="perCapita" type="number">0</span>
+    </div>
+    <div class="item">
+      <button onclick="getResult()" type="number">计算</button>
+    </div>
+    <div class="item">
+      <div>
+        <span>详细描述:</span>
+      </div>
+    </div>
+    <div>
+      <span id="detail"></span>
+    </div>
+  </div>
+</body>
+</html>
+<script>
+  function getResult(){
+    const sumValue = ~~document.getElementById('sum').value
+    const perCapitaDom = document.getElementById('perCapita')
+    const count = document.getElementById('count').value // 人数
+    const detailDom = document.getElementById('detail') // 详细数据
+    const deadBodyPower = document.getElementById('deadBodyPower').value // 分红人
+    const deadBodyLimit = document.getElementById('deadBodyLimit').value // 分红收入
+    const deadBodyRate = document.getElementById('deadBodyRate').value // 分红百分比
+    let deadBodyIncome = 0
+    let perCapita = 0
+    let subsidy = 0
+
+    if(count<=0){
+      alert('人数不对,没法算')
+      return
+    }
+    const tSingleSubsidy = ~~document.getElementById('tSubsidy').value
+    const nSingleSubsidy = ~~document.getElementById('nSubsidy').value
+    const smSingleSubsidy = ~~document.getElementById('smSubsidy').value
+    const tSubsidy = ~~document.getElementById('tCount').value * tSingleSubsidy
+    const nSubsidy = ~~document.getElementById('nCount').value * nSingleSubsidy
+    const smSubsidy = ~~document.getElementById('smCount').value * smSingleSubsidy
+    subsidy = tSubsidy + nSubsidy + smSubsidy
+    if(deadBodyPower && (~~deadBodyLimit <= ~~sumValue)){
+      deadBodyIncome = sumValue * (deadBodyRate/100)
+      perCapita = (sumValue * (1 - deadBodyRate/100) - subsidy) / count
+    }else{
+      perCapita = (sumValue - subsidy) / count
+    }
+    perCapitaDom.innerHTML = perCapita
+    detailDom.innerHTML = [
+      "本次g团总收入为:" , sumValue , "</br>",
+      "分金人数为:" , count , "</br>",
+      "是否存在分红：",deadBodyIncome>0 ? "存在。" : "不存在", deadBodyIncome>0 ? deadBodyPower+"分红"+deadBodyIncome : "", "</br>",
+      "坦克人员总补助" , tSubsidy ,",占比" , (tSubsidy/sumValue * 100).toFixed(2)+"%" , "</br>",
+      "治疗人员总补助" , nSubsidy ,",占比" , (nSubsidy/sumValue * 100).toFixed(2)+"%" , "</br>",
+      "萨满人员总补助" , smSubsidy ,",占比" , (smSubsidy/sumValue * 100).toFixed(2)+"%" , "</br>",
+      "总补助" , tSubsidy+nSubsidy+smSubsidy ,",总占比" , ((tSubsidy+nSubsidy+smSubsidy)/sumValue * 100).toFixed(2)+"%" , "</br>",
+      "普通打工人收入" , perCapita ,",占比" , (perCapita/sumValue * 100).toFixed(2)+"%" , "</br></br>",
+      "普通打工人收入" , perCapita ,"</br>",
+      "坦克打工人收入" , perCapita+tSingleSubsidy ,"</br>",
+      "治疗打工人收入" , perCapita+nSingleSubsidy ,"</br>",
+      "萨满打工人收入" , perCapita+smSingleSubsidy ,"</br>",
+    ].reduce((a,b) => a+b)
+  }
+</script>
+<style>
+  .wrapper{
+    width: 600px;
+    margin: 0 auto;
+    border-radius: 5px;
+    border: 1px solid #aaaaaa;
+    padding: 10px;
+  }
+  .title{
+    height: 50px;
+    font-size: 20px;
+  }
+  .subTitle{
+    height: 30px;
+    font-size: 16px;
+  }
+  .item{
+    height: 30px;
+  }
+  .red{
+    color: #ff0000;
+  }
+</style>
