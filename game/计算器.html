@@ -5,61 +5,88 @@
     <title>烽火必出蛋刀</title>
 </head>
 <body>
-  <div class="wrapper">
-    <div class="title">烽火——g团计算器V1.0</div>
-    <div class="subTitle">作者：
-      <span class="red">觅心者-鬼子不服</span>
-    </div>
-    <div class="item">
-      <span>总收入:</span>
-      <input id="sum" type="number" value="5000"/>
-    </div>
-    <div class="item">
-      <span>总人数:</span>
-      <input id="count" type="number" value="25"/>
-    </div>
-    <div class="item">
-      <span>T人数</span>
-      <input id="tCount" type="number" value="0"/>
-      <span>T补助</span>
-      <input id="tSubsidy" type="number" value="100"/>
-    </div>
-    <div class="item">
-      <span>N人数</span>
-      <input id="nCount" type="number" value="0"/>
-      <span>N补助</span>
-      <input id="nSubsidy" type="number" value="100"/>
-    </div>
-    <div class="item">
-      <span>SM人数</span>
-      <input id="smCount" type="number" value="0"/>
-      <span>SM补助</span>
-      <input id="smSubsidy" type="number" value="200"/>
-    </div>
-    <div class="item">
-      <span>摸尸分红</span>
-      <input id="deadBodyPower" placeholder="摸尸佬(不填默认无)"/>
-      <span>分红收入</span>
-      <input id="deadBodyLimit" type="number" value="5000"/>
-    </div>
-    <div class="item">
-      <span>分红百分比</span>
-      <input id="deadBodyRate" type="number" value="2"/>
-    </div>
-    <div class="item">
-      <span>人均:</span>
-      <span id="perCapita" type="number">0</span>
-    </div>
-    <div class="item">
-      <button onclick="getResult()" type="number">计算</button>
-    </div>
-    <div class="item">
+  <div>
+    <div class="wrapper1">
+      <div class="title">烽火——g团记账器V1.0</div>
+      <div class="subTitle">作者：
+        <span class="red">觅心者-鬼子不服</span>
+      </div>
+      <button class="button" onclick="listAdd()">添加</button>
+      <div id="list">
+        <div class="listItem">
+          <span>物品:</span><input class="itemSelf input"/>
+          <span>价格:</span><input type='number' class="price input"/>
+          <span>获取</span><input class="getPlayer input"/>
+          <span>赊账</span><input type="checkbox" class="payed"/>
+        </div>
+      </div>
+
+      <button style="margin-top: 10px" class="button" onclick="getListResult()">结算</button>
+      <div class="item">
+        <div>
+          <span>详细描述:</span>
+        </div>
+      </div>
       <div>
-        <span>详细描述:</span>
+        <span id="resultDetail"></span>
       </div>
     </div>
-    <div>
-      <span id="detail"></span>
+    <div class="wrapper1">
+      <div class="title">烽火——g团计算器V1.0</div>
+      <div class="subTitle">作者：
+        <span class="red">觅心者-鬼子不服</span>
+      </div>
+      <div class="item">
+        <span>总收入:</span>
+        <input id="sum" class="input" type="number" value="5000"/>
+      </div>
+      <div class="item">
+        <span>总人数:</span>
+        <input id="count" class="input" type="number" value="25"/>
+      </div>
+      <div class="item">
+        <span>T人数</span>
+        <input id="tCount" class="input" type="number" value="0"/>
+        <span>T补助</span>
+        <input id="tSubsidy" class="input" type="number" value="100"/>
+      </div>
+      <div class="item">
+        <span>N人数</span>
+        <input id="nCount" class="input" type="number" value="0"/>
+        <span>N补助</span>
+        <input id="nSubsidy" class="input" type="number" value="100"/>
+      </div>
+      <div class="item">
+        <span>SM人数</span>
+        <input id="smCount" class="input" type="number" value="0"/>
+        <span>SM补助</span>
+        <input id="smSubsidy" class="input" type="number" value="200"/>
+      </div>
+      <div class="item">
+        <span>摸尸分红</span>
+        <input id="deadBodyPower" class="input" placeholder="摸尸佬(不填默认无)"/>
+        <span>分红收入</span>
+        <input id="deadBodyLimit" class="input" type="number" value="5000"/>
+      </div>
+      <div class="item">
+        <span>分红百分比</span>
+        <input id="deadBodyRate" class="input" type="number" value="2"/>
+      </div>
+      <div class="item">
+        <span>人均:</span>
+        <span id="perCapita" class="input" type="number">0</span>
+      </div>
+      <div class="item">
+        <button class="button" onclick="getResult()" type="number">计算</button>
+      </div>
+      <div class="item">
+        <div>
+          <span>详细描述:</span>
+        </div>
+      </div>
+      <div>
+        <span id="detail"></span>
+      </div>
     </div>
   </div>
 </body>
@@ -110,8 +137,84 @@
       "萨满打工人收入" , perCapita+smSingleSubsidy ,"</br>",
     ].reduce((a,b) => a+b)
   }
+
+  function listAdd(){
+    const listDom = document.getElementById("list")
+    const addDom = document.createElement('div')
+    addDom.classList.add('listItem')
+    addDom.innerHTML = "<span>物品:</span><input class=\"itemSelf input\"/>\n" +
+            "          <span>价格:</span><input type='number' class=\"price input\"/>\n" +
+            "          <span>获取</span><input class=\"getPlayer input\"/>\n" +
+            "          <span>赊账</span><input type=\"checkbox\" class=\"payed\"/>"
+    listDom.append(addDom)
+  }
+
+  function getListResult(){
+    const listItem = document.getElementsByClassName('listItem')
+    const priceDoms = document.getElementsByClassName('price')
+    const payedDoms = document.getElementsByClassName('payed')
+    const getPlayerDoms = document.getElementsByClassName('getPlayer')
+    const resultDetailDom = document.getElementById('resultDetail')
+    const priceDomsArray = [...priceDoms]
+    const payedDomsArray = [...payedDoms]
+    const getPlayerDomsArray = [...getPlayerDoms]
+
+    const priceValueArray = priceDomsArray.map(i => ~~i.value)
+    const payedValueArray = payedDomsArray.map(i => i.checked)
+    const getPlayerValueArray = getPlayerDomsArray.map(i => i.value)
+
+    const totalPrice = priceValueArray.reduce((a,b) => a+b)
+    const unPayedArray = priceValueArray.filter((i,index)=>{
+      return payedValueArray[index]
+    })
+    const getPlayerArray = getPlayerValueArray.filter((i,index)=>{
+      return payedValueArray[index]
+    })
+    const unPayedTotal = (unPayedArray).reduce((a,b) => a+b,0)
+    console.log(getPlayerArray)
+    const unPayedPlayer = Array.from(new Set(getPlayerArray)).reduce((a,b) => a+b+",","")
+    resultDetailDom.innerHTML = [
+      "总收入:",totalPrice,"<br/>",
+      "未收到欠款:",unPayedTotal,"<br/>",
+      "催账找:",unPayedPlayer,"<br/>"
+    ].reduce((a,b) => a+b)
+  }
 </script>
 <style>
+  html{
+    color: #314659;
+  }
+  .input{
+    box-sizing: border-box;
+    margin: 0;
+    font-variant: tabular-nums;
+    list-style: none;
+    font-feature-settings: "tnum";
+    position: relative;
+    display: inline-block;
+    width: 120px;
+    height: 24px;
+    padding: 4px 11px;
+    color: rgba(0,0,0,.65);
+    font-size: 14px;
+    line-height: 1.5;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    transition: all .3s;
+    margin-left: 10px;
+  }
+  .listItem{
+    margin-bottom: 8px;
+  }
+  .wrapper1{
+    width: 800px;
+    margin: 0 auto;
+    border-radius: 5px;
+    border: 1px solid #aaaaaa;
+    padding: 10px;
+  }
   .wrapper{
     width: 600px;
     margin: 0 auto;
@@ -132,5 +235,39 @@
   }
   .red{
     color: #ff0000;
+  }
+  .button{
+    margin-right: 8px;
+    margin-bottom: 12px;
+    width: 120px;
+    height: 30px;
+    background: #1890ff;
+    color: #fff;
+    text-shadow: 0 -1px 0 rgb(0 0 0 / 12%);
+    box-shadow: 0 2px 0 rgb(0 0 0 / 5%);
+    line-height: 1.499;
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    white-space: nowrap;
+    text-align: center;
+    background-image: none;
+    cursor: pointer;
+    transition: all .3s cubic-bezier(.645,.045,.355,1);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
+    padding: 0 15px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #d9d9d9;
+  }
+
+  .button:focus, .button:hover{
+    color: #40a9ff;
+    background-color: #fff;
+    border-color: #40a9ff;
   }
 </style>
